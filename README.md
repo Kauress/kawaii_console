@@ -1,9 +1,8 @@
 =====================================================================
-# kawaii console  
+# Kawaii Console  
  On github pages here: https://kauress.github.io/kawaii_console/
-
+ 
 ![Kawaii console ](https://media.giphy.com/media/FCAtVWWt1o4U192yer/giphy.gif)
-
 ======================================================================
 
 
