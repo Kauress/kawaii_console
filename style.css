@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Audiowide');
-
+@import url('https://fonts.googleapis.com/css?family=Overpass+Mono');
 body{
  background-color:#000000;
  color: #FFFFFF;
- font-family: 'Audiowide', cursive;
+ font-family: 'Overpass Mono', monospace;
 }
 
 .seperator{
@@ -43,11 +42,26 @@ body{
  height: 170px;
 }
 #main-heading{
- font-size:25px;
+ font-size:35px;
 }
+
 #donut{
  height:75px;
 }
 #log{
 color:#FFFFFF;
+}
+
+#cloud{
+ width: 150px;
+
+}
+#clear-div{
+ text-align: center;
+ opacity: 0.65;
+}
+#line-number{
+ color:#4891b6;
+ margin-right: 10px;
+ font-weight:900;
 }
