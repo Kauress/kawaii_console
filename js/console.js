@@ -1,7 +1,8 @@
+
 (function() {
   var old = console.log;
   var logger = document.getElementById('log');
-  var lineNum = -1;
+   var lineNum = -1;
   console.log = function(msg) {
     lineNum++;
     var span = document.createElement("span");
@@ -13,22 +14,24 @@
     image.setAttribute("id", "donut");
     logger.appendChild(span);
     logger.appendChild(image);
-    if (typeof msg == 'undefined') {
+
+    if (typeof msg === 'undefined' ) {
       image.setAttribute("src", "https://media.giphy.com/media/3o6fJ8bYYnCW95ST0A/giphy.gif");
-    } else if (typeof msg == 'boolean') {
+    } else if (typeof msg === 'boolean') {
       image.setAttribute("src", "https://media.giphy.com/media/l0HlQ3G4QVZJsKvte/giphy.gif");
-    } else if (msg === null) {
-      image.setAttribute("src", "https://media.giphy.com/media/5SzpVxeeBUTUi6s0Eg/giphy.gif");
-    } else if (typeof msg == 'number') {
+    } else if (typeof msg === 'number') {
       image.setAttribute("src", "https://media.giphy.com/media/9Pmf3dqpfxX3XRC3il/giphy.gif");
-    } else if (typeof msg == 'function') {
+    } else if (typeof msg === 'function') {
       image.setAttribute("src", "https://media.giphy.com/media/24FIh2qQLsTVyAL03I/giphy.gif");
     } else if (msg instanceof Array) {
       image.setAttribute("src", "https://media.giphy.com/media/2sfDnHIEFe7aAbArdZ/giphy.gif");
     } else if (msg instanceof Object) {
       image.setAttribute("src", "https://media.giphy.com/media/5Ypzkp2Ia3vI9ieJjK/giphy.gif");
+    }  else if (msg === null && typeof msg == "object") {
+      image.setAttribute("src", "https://media.giphy.com/media/5SzpVxeeBUTUi6s0Eg/giphy.gif");
     }
-    for (var i = 0; i < arguments.length; i++) {
+
+   for (var i = 0; i < arguments.length; i++) {
       if (typeof arguments[i] == 'object') {
         var foo = arguments[i];
         logger.innerHTML += " " + JSON.stringify(arguments[i]) + " (Type of value:" + typeof arguments[i] + ")" + "</br>";
@@ -66,16 +69,36 @@
       logger.innerHTML = "";
     }, 3000);
   } //end of console clear
-  console.table = function(msg) {
-    logger.innerHTML += msg;
+
+    console.warn = function(msg) {
+     lineNum = lineNum + 1;
+    var span2 = document.createElement("span");
+    span2.setAttribute("id", "warning-span");
+    var numText = document.createTextNode(lineNum + ".");
+    var warningImage = document.createElement("img");
+      warningImage.setAttribute("id","warning-img");
+      warningImage.setAttribute("src","https://media.giphy.com/media/l4pTa6TmeYyYjD9ss/giphy.gif");
+      var warningP= document.createElement("span");
+      warningP.setAttribute("id","warning-text")
+    var warningText =  document.createTextNode("If this is logging then it's a warning..");
+      warningP.appendChild(warningText)
+    span2.appendChild(numText);
+      logger.appendChild(span2)
+      logger.appendChild(warningP);
+            logger.appendChild(warningImage);
+      logger.innerHTML+= "</br>"
   } // end of console warn
+ console.trace = function(funcName){
+   lineNum = lineNum + 1;
+   var span3 = document.createElement('span');
+   span3.setAttribute('id',"caller-span");
+   var numText = document.createTextNode(lineNum + ".");
+   var callerImage= document.createElement("img");
+   callerImage.setAttribute("id","caller-img");
+   callerImage.setAttribute('src', "https://media.giphy.com/media/9xyQPqOG9oJjimtua3/giphy.gif");
+   span3.appendChild(numText);
+   logger.appendChild(span3);
+   logger.appendChild(callerImage);
+  logger.innerHTML+= " The caller of this function is traced to:" +"</br>" + funcName.caller + "</br>";
+}// end of console trace
 })();
-var person = {
-  "name": "Dogs",
-  age: 100
-}
-console.log(person);
-console.log([1,2,3]);
-console.log("This is a string")
-var foo;
-console.log(foo)
