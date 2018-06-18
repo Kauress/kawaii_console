@@ -28,3 +28,5 @@ function b(){
   console.trace(b);
 }
 bar();
+var c = null;
+console.log(c)
