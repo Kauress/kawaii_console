@@ -7,8 +7,8 @@ var gamefoo ={
   available: "yes"
 }
 console.warn(gamefoo);
-var c = null;
-console.log(c)
+//var c = null;
+//console.log(c)
 console.log(false);
 
 var foo = [1,"two",3];
@@ -18,7 +18,6 @@ var person = {
   age: 100,
   naps: "yes, please"
 }
-
 console.log(person);
 
 function bar(){
@@ -27,6 +26,8 @@ function bar(){
 function b(){
   console.trace(b);
 }
+console.log["a","c","d","e"];
 bar();
+console.log([1,2,3,4,5]);
 var c = null;
 console.log(c)
